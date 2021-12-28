@@ -1,17 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply, getDeviceId, payAmount } from 'react-native-payfort';
+import { payAmount } from 'react-native-payfort';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
- const temp = async ()=> {
-   let id = await getDeviceId();
-  //  console.log(id)
- }
-  const pay =() => {
-    // multiply(3, 7).then(setResult);
+  const pay = () => {
     payAmount(
       {
         command: 'AUTHORIZATION',
@@ -24,20 +17,14 @@ export default function App() {
         email: 'shubham.d@sankeysolutions.com',
         isProduction: false,
       },
-      (success) => console.log({success}),
-      (error) => console.log({error})
+      (success: any) => console.log({ success }),
+      (error: any) => console.log({ error })
     );
   };
-  // useEffect(() => {
-  //   pay();
-  //   return () => {
-      
-  //   }
-  // }, [])
 
   return (
     <View style={styles.container}>
-      <Text onPress={pay}>Result: {result}</Text>
+      <Text onPress={pay}>Pay</Text>
     </View>
   );
 }

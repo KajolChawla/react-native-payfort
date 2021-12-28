@@ -20,9 +20,6 @@ const Payfort = NativeModules.Payfort
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  // return Payfort.multiply(a, b);
-}
 export const getDeviceId = () =>
   new Promise(async (resolve: any, reject: any) => {
     try {
@@ -65,7 +62,6 @@ const getValidRequest = async (data: any) => {
     language,
     amount,
     currencyType,
-    isProduction,
   } = data ?? {};
   if (
     access_code &&
@@ -82,18 +78,15 @@ const getValidRequest = async (data: any) => {
     console.log({ reqBody });
 
     let SDK_TOKEN = await getSDKToken(reqBody);
-    console.log({SDK_TOKEN});
     reqBody.sdk_token = SDK_TOKEN.sdk_token;
     return JSON.stringify(reqBody);
   }
   return false;
 };
 
-const getSDKToken = async (data) => {
-  let isProduction = data.isProduction;
+const getSDKToken = async (data: any) => {
   let access_code = data.access_code;
   let merchant_identifier = data.merchant_identifier;
-  let _merchant_reference = data.merchant_reference;
   let language = data.language;
   let shaPhrase = data.sha_request_phrase;
   let deviceID = await getDeviceId();
@@ -109,13 +102,12 @@ const getSDKToken = async (data) => {
     access_code: access_code,
     signature: hash256,
   };
-  console.log({ postBody });
   const response = await fetch(BASE_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Content-Length': Object.keys(postBody).length,
+      'Content-Length': `${Object.keys(postBody).length}`,
     },
     body: JSON.stringify(postBody),
   });
