@@ -1,0 +1,24 @@
+
+/* Class = "UITextField"; placeholder = "CVV"; ObjectID = "20f-SL-euE"; */
+"20f-SL-euE.placeholder" = "CVV";
+
+/* Class = "UITextField"; placeholder = "CARD NUMBER"; ObjectID = "7ci-r8-Erm"; */
+"7ci-r8-Erm.placeholder" = "CARD NUMBER";
+
+/* Class = "UILabel"; text = "SAVE THIS CARD"; ObjectID = "GnL-hP-8re"; */
+"GnL-hP-8re.text" = "SAVE THIS CARD";
+
+/* Class = "UITextField"; placeholder = "EXPIRY DATE"; ObjectID = "RmX-VT-Nnv"; */
+"RmX-VT-Nnv.placeholder" = "EXPIRY DATE";
+
+/* Class = "UIButton"; normalTitle = "Complete Payment"; ObjectID = "XnZ-SZ-Q5h"; */
+"XnZ-SZ-Q5h.normalTitle" = "Complete Payment";
+
+/* Class = "UILabel"; text = "Credit Card"; ObjectID = "ecx-Q5-7pf"; */
+"ecx-Q5-7pf.text" = "Credit Card";
+
+/* Class = "UITextField"; placeholder = "CARDHOLDER NAME"; ObjectID = "tzA-5E-Nkk"; */
+"tzA-5E-Nkk.placeholder" = "CARDHOLDER NAME";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xrZ-38-1fB"; */
+"xrZ-38-1fB.text" = "Label";
