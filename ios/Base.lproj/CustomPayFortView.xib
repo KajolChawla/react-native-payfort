@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -39,20 +38,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4R-8Y-exa">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy8-6z-vg3">
-                            <rect key="frame" x="6" y="31" width="32" height="29.5"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="32" id="0ep-vv-CzA"/>
-                                <constraint firstAttribute="height" constant="32" id="dix-MF-Gib"/>
-                            </constraints>
-                            <color key="tintColor" systemColor="opaqueSeparatorColor"/>
-                            <state key="normal" backgroundImage="arrowshape.turn.up.left.fill" catalog="system">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="titleShadowColor" systemColor="opaqueSeparatorColor"/>
-                            </state>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Credit Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecx-Q5-7pf">
-                            <rect key="frame" x="126" y="37" width="162" height="19.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecx-Q5-7pf">
+                            <rect key="frame" x="126" y="28" width="162" height="19.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="162" id="8SJ-33-xfx"/>
                             </constraints>
@@ -60,6 +47,16 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy8-6z-vg3">
+                            <rect key="frame" x="4" y="23" width="32" height="27.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="0ep-vv-CzA"/>
+                                <constraint firstAttribute="height" constant="32" id="dix-MF-Gib"/>
+                            </constraints>
+                            <state key="normal" image="backward" catalog="system" backgroundImage="backward">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -274,33 +271,28 @@
                 <outlet property="expDateErrorlbl" destination="eDQ-G3-hgK" id="Rlr-6x-FcZ"/>
                 <outlet property="headerHeight" destination="25r-Fg-cd4" id="6D3-aG-IyU"/>
                 <outlet property="imageCard" destination="Puy-QG-5ah" id="UEC-q2-Mit"/>
-                <outlet property="paymentBtn" destination="XnZ-SZ-Q5h" id="3g1-Xf-ggp"/>
                 <outlet property="saveCardLbl" destination="GnL-hP-8re" id="OM6-KB-oKa"/>
                 <outlet property="savedCardSwitch" destination="8Ba-VT-IFE" id="oeb-Xt-5mE"/>
                 <outlet property="titleLbl" destination="ecx-Q5-7pf" id="lwc-7e-YzQ"/>
-                <outlet property="titleView" destination="O4R-8Y-exa" id="Vre-US-83F"/>
             </connections>
-            <point key="canvasLocation" x="-341" y="-11"/>
+            <point key="canvasLocation" x="-288" y="50"/>
         </view>
     </objects>
     <designables>
         <designable name="20f-SL-euE">
-            <size key="intrinsicContentSize" width="26.5" height="17"/>
+            <size key="intrinsicContentSize" width="26.5" height="28"/>
         </designable>
         <designable name="7ci-r8-Erm">
-            <size key="intrinsicContentSize" width="99.5" height="17"/>
+            <size key="intrinsicContentSize" width="99.5" height="28"/>
         </designable>
         <designable name="RmX-VT-Nnv">
-            <size key="intrinsicContentSize" width="84.5" height="17"/>
+            <size key="intrinsicContentSize" width="84.5" height="28"/>
         </designable>
         <designable name="tzA-5E-Nkk">
-            <size key="intrinsicContentSize" width="135" height="17"/>
+            <size key="intrinsicContentSize" width="135" height="28"/>
         </designable>
     </designables>
     <resources>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="backward" catalog="system" width="128" height="79"/>
     </resources>
 </document>
