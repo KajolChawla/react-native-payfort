@@ -1,18 +1,31 @@
-import * as React from 'react';
+import React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-payfort';
+import { payAmount } from 'react-native-payfort';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const pay = () => {
+    payAmount(
+      {
+        command: 'AUTHORIZATION',
+        access_code: 'rYsi47ajRWvPeDcWOq8o',
+        merchant_identifier: 'LYlVIrli',
+        sha_request_phrase: 'O@kmnbvc234',
+        amount: '100',
+        currencyType: 'SAR',
+        language: 'en',
+        email: 'shubham.d@sankeysolutions.com',
+        isProduction: false,
+      },
+      (success: any) => console.log({ success }),
+      (error: any) => console.log({ error })
+    );
+  };
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text onPress={pay}>Pay</Text>
     </View>
   );
 }
