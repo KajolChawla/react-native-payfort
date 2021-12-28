@@ -1,4 +1,8 @@
 #import "Payfort.h"
+#include <CommonCrypto/CommonDigest.h>
+
+
+#import </Users/apple/Desktop/npm/react-native-payfort/example/ios/Pods/PayFortSDK/PayFortSDK.xcframework/ios-arm64/PayFortSDK.framework/Headers/PayFortSDK-Swift.h>
 @interface Payfort ()
 {
     PayFortController * payFort;
