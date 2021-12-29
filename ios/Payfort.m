@@ -104,13 +104,16 @@ RCT_EXPORT_METHOD(Pay:(NSString *)strData successCallback:(RCTResponseSenderBloc
         [payFort callPayFortWithRequest:request currentViewController:payFort
                                 success:^(NSDictionary *requestDic, NSDictionary *responeDic) { NSLog(@"Success");
             NSLog(@"responeDic=%@",responeDic);
+            successCallbackPayfort(@[responeDic]);
         }
                                canceled:^(NSDictionary *requestDic, NSDictionary *responeDic) { NSLog(@"Canceled");
             NSLog(@"responeDic=%@",responeDic);
+            errorCallbackPayfort(@[responeDic]);
         }
                                   faild:^(NSDictionary *requestDic, NSDictionary *responeDic, NSString *message) {
             NSLog(@"Faild");
             NSLog(@"responeDic=%@",responeDic);
+            errorCallbackPayfort(@[responeDic]);
         }];
     });
 }
