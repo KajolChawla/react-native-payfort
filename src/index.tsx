@@ -38,8 +38,19 @@ export const getSHA256 = (str: String) =>
 export const payAmount = async (payConf: Object, success: any, error: any) => {
   try {
     let reqBody = await getValidRequest(payConf);
-    console.log({reqBody})
     Payfort.Pay(reqBody, success, error);
+  } catch (ex) {
+    return ex;
+  }
+};
+export const applePayAmmount = async (
+  payConf: Object,
+  success: any,
+  error: any
+) => {
+  try {
+    let reqBody = await getValidRequest(payConf);
+    Payfort.PayWithApplePay(reqBody, success, error);
   } catch (ex) {
     return ex;
   }
