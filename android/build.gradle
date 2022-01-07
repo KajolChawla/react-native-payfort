@@ -2,12 +2,13 @@ buildscript {
     if (project == rootProject) {
         repositories {
             google()
-            mavenCentral()
+            // mavenCentral()
             jcenter()
         }
-
         dependencies {
-            classpath 'com.android.tools.build:gradle:3.5.3'
+            classpath 'com.android.tools.build:gradle:4.2.0'
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21"
+
         }
     }
 }
@@ -19,6 +20,7 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
+
     compileSdkVersion safeExtGet('Payfort_compileSdkVersion', 29)
     defaultConfig {
         minSdkVersion safeExtGet('Payfort_minSdkVersion', 16)
@@ -27,33 +29,50 @@ android {
         versionName "1.0"
 
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-    lintOptions {
+  lintOptions {
         disable 'GradleCompatible'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
 }
 
-repositories {
-    mavenLocal()
-    maven {
-        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        url("$rootDir/../node_modules/react-native/android")
+rootProject.allprojects {
+    repositories {
+        google()
+        maven { url "https://android-sdk.payfort.com"}
     }
-    google()
-    mavenCentral()
-    jcenter()
 }
 
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation "com.google.android.material:material:1.4.0"
+    implementation"com.amazon:fortpayment:+:release@aar"
+    implementation "androidx.core:core-ktx:1.6.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.21"
+    implementation 'com.google.code.gson:gson:2.8.7'
+    def lifecycle_version = "2.4.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+  implementation "androidx.work:work-runtime:2.3.1"
+  implementation "androidx.work:work-rxjava2:2.3.1"
+
+  implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+  implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+  implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+  implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+  implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+  implementation "io.reactivex.rxjava2:rxjava:2.1.16"
+
+  implementation 'com.google.guava:guava:+'
+  implementation 'org.bouncycastle:bcpkix-jdk15on:1.56'
+
+  implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
 }
