@@ -200,7 +200,7 @@ RCT_EXPORT_METHOD(PayWithApplePay:(NSString *)strData successCallback:(RCTRespon
 
 
 - (NSString *)moduleName {
-    return @"Payfort";
+    return @"{name: Payfort, author: shubham dhumal}";
 }
 
 #pragma mark - PKPaymentAuthorizationViewControllerDelegate
@@ -213,7 +213,6 @@ RCT_EXPORT_METHOD(PayWithApplePay:(NSString *)strData successCallback:(RCTRespon
 {
     BOOL asyncSuccessful = payment.token.paymentData.length != 0;
     NSLog(@"payment %@", payment.token.paymentData);
-//    completion(PKPaymentAuthorizationStatusSuccess);
 
     if(asyncSuccessful) {
         
@@ -261,20 +260,17 @@ RCT_EXPORT_METHOD(PayWithApplePay:(NSString *)strData successCallback:(RCTRespon
                                    applePayPayment:payment
                              currentViewController:nav
                                            success:^(NSDictionary *requestDic, NSDictionary *responeDic) {
-//            isApplePaymentDidPayment = TRUE;
             successCallbackApplePay(@[responeDic]);
             NSLog(@"Sucess ApplePay %@", responeDic);
             completion(PKPaymentAuthorizationStatusSuccess);
         }
                                              faild:^(NSDictionary *requestDic, NSDictionary *responeDic, NSString *message) {
-//            isApplePaymentDidPayment = TRUE;
             NSLog(@"Error %@", responeDic);
             errorCallbackApplePay(@[responeDic]);
             completion(PKPaymentAuthorizationStatusFailure);
         }];
     } else {
-//        isApplePaymentDidPayment = TRUE;
-//        errorCallbackApplePay(@[]);
+//        errorCallbackApplePay(@[@""]);
         NSLog(@"Errore");
         completion(PKPaymentAuthorizationStatusFailure);
     }
@@ -283,10 +279,7 @@ RCT_EXPORT_METHOD(PayWithApplePay:(NSString *)strData successCallback:(RCTRespon
 
 -(void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
 {
-//    if(!isApplePaymentDidPayment)
-//    {
-//        errorCallbackApplePay(@[applePayBody]);
-//    }
+
     NSLog(@"PKPaymentAuthorizationViewController");
     UIViewController *rootViewController = UIApplication.sharedApplication.keyWindow.rootViewController;
     if ([rootViewController isKindOfClass:[UINavigationController class]]) {
@@ -294,7 +287,8 @@ RCT_EXPORT_METHOD(PayWithApplePay:(NSString *)strData successCallback:(RCTRespon
     } else {
         [rootViewController dismissViewControllerAnimated:YES completion:nil];
     }
-//    [controller dismissViewControllerAnimated:true completion:nil];
 }
+
+
 
 @end

@@ -17,7 +17,6 @@ const Payfort = NativeModules.Payfort
         },
       }
     );
-
 export const getDeviceId = () =>
   new Promise(async (resolve: any, reject: any) => {
     try {
@@ -48,6 +47,9 @@ export const applePayAmmount = async (
   success: any,
   error: any
 ) => {
+  if (Platform.OS !== 'ios') {
+    return 'apple pay only suport ios!';
+  }
   try {
     let reqBody = await getValidRequest(payConf);
     Payfort.PayWithApplePay(reqBody, success, error);
@@ -58,7 +60,7 @@ export const applePayAmmount = async (
 
 //Common funtions
 const getMerchantRef = () => {
-  return `${Math.random() * 4294967296}`;
+  return `${Math.round(Math.random() * 4294967296)}`;
 };
 
 const getValidRequest = async (data: any) => {
@@ -87,6 +89,7 @@ const getValidRequest = async (data: any) => {
     console.log({ reqBody });
 
     let SDK_TOKEN = await getSDKToken(reqBody);
+    console.log(SDK_TOKEN);
     reqBody.sdk_token = SDK_TOKEN.sdk_token;
     return JSON.stringify(reqBody);
   }
@@ -120,8 +123,5 @@ const getSDKToken = async (data: any) => {
     },
     body: JSON.stringify(postBody),
   });
-  // .then((response) => response.text())
-  // .then((result) => console.log(result))
-  // .catch((error) => console.log('error', error));
   return response.json();
 };
