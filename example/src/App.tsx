@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { applePayAmmount } from 'react-native-payfort';
+import { applePayAmmount,getDeviceId } from 'react-native-payfort';
 
 export default function App() {
-
+  const tap = async () => await getDeviceId();
   const pay = () => {
     applePayAmmount(
       {
@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text onPress={pay}>Pay</Text>
+      <Text onPress={tap}>Pay</Text>
     </View>
   );
 }
